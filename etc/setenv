@@ -1,0 +1,17 @@
+basepath=$(pwd)
+
+echo $basepath
+export cfg_path=$HOME/work/github/OpenGlStudy/etc/work.ubb
+export BIN_PATH=$HOME/work/github/OpenGlStudy/bin
+export PATH=$PATH:$HOME/work/github/OpenGlStudy/bin
+export BIN_PATH=$HOME/work/github/OpenGlStudy/bin
+export PUBSUB_LOG_PATH=$HOME/work/github/OpenGlStudy/log/
+export LOG_LEVEL=3
+export LD_LIBRARY_PATH=$HOME/work/github/OpenGlStudy/lib:$HOME/github/OpenGlStudy/3rdparty/lib:/usr/local/lib
+export OUT_PORT=21
+export IN_PORT=19870
+export CONFIG_FILE=$HOME/work/github/OpenGlStudy/etc/work.prj
+#0 INFO
+#1 WARNING
+#2 ERROR
+#3 FATAL
