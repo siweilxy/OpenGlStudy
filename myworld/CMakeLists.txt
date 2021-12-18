@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(1.0)
+project(myworld)
 
 SET(EXECUTABLE_OUTPUT_PATH $ENV{HOME}/work/github/OpenGlStudy/bin)
 SET(LIBRARY_OUTPUT_PATH $ENV{HOME}/work/github/OpenGlStudy/lib)
@@ -32,10 +32,10 @@ source_group(all_files)
 include_directories($ENV{HOME}/work/github/OpenGlStudy/include/)
 include_directories(/usr/local/include/gl3w/)
 include_directories($ENV{HOME}/work/github/OpenGlStudy/3rdparty/include/)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-add_executable(test1.0 ${all_files})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+add_executable(myworld ${all_files})
 
-target_link_libraries(test1.0 GL GLU glut glfw3 dl pthread)
+target_link_libraries(myworld GL GLU glut glfw3 dl pthread)
 
 
 
