@@ -2,11 +2,19 @@
 #include <sys/time.h>
 #include <memory.h>
 #include <iostream>
+#include <string>
 class VermilionApplication
 {
 protected:
     inline VermilionApplication(void) {}
     virtual ~VermilionApplication(void) {}
+
+    std::string name;
+    std::string biaoshifu; //返回一个渲染器标识符，通常是个硬件平台
+    std::string OpenGLVersion; //返回当前OpenGL实现的版本号
+    std::string version; //返回当前GLU工具库版本
+    
+    char temp[255];
 
     static VermilionApplication * s_app;
     GLFWwindow* m_pWindow;
@@ -83,13 +91,22 @@ public:
 
     void printVersion()
     {
-        const GLubyte *name = glGetString (GL_VENDOR); //返回负责当前OpenGL实现厂商的名字
-        const GLubyte *biaoshifu = glGetString (GL_RENDERER); //返回一个渲染器标识符，通常是个硬件平台
-        const GLubyte *OpenGLVersion = glGetString (GL_VERSION); //返回当前OpenGL实现的版本号
+        const GLubyte *glName = glGetString (GL_VENDOR); //返回负责当前OpenGL实现厂商的名字
+        const GLubyte *glBiaoshifu = glGetString (GL_RENDERER); //返回一个渲染器标识符，通常是个硬件平台
+        const GLubyte *glOpenGLVersion = glGetString (GL_VERSION); //返回当前OpenGL实现的版本号
         const GLubyte *gluVersion = gluGetString (GLU_VERSION); //返回当前GLU工具库版本
-        printf ("OpenGL实现厂商的名字：%s\n", name);
-        printf ("渲染器标识符：%s\n", biaoshifu);
-        printf ("OpenGL实现的版本号：%s\n", OpenGLVersion);
-        printf ("OGLU工具库版本：%s\n", gluVersion);
+
+        snprintf(temp,sizeof(temp),"%s",glName);
+        name = temp;
+        snprintf(temp,sizeof(temp),"%s",glBiaoshifu);
+        biaoshifu = temp;
+        snprintf(temp,sizeof(temp),"%s",glOpenGLVersion);
+        OpenGLVersion = temp;
+        snprintf(temp,sizeof(temp),"%s",gluVersion);
+        version = temp;
+
+        std::cout<<"OpenGL实现厂商的名字："<<name<<" 渲染器标识符："
+        <<biaoshifu<<" OpenGL实现的版本号："<<OpenGLVersion
+        <<" OGLU工具库版本："<<version<<std::endl;
     }
 };
