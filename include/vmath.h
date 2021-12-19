@@ -994,7 +994,7 @@ typedef Tmat2<float> mat2;
 
 static inline mat4 frustum(float left, float right, float bottom, float top, float n, float f)
 {
-    mat4 result(mat4::identity());
+    mat4 result(mat4::identity());//对角矩阵
 
     if ((right == left) ||
         (top == bottom) ||

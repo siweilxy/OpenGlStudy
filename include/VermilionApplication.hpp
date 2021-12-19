@@ -1,3 +1,5 @@
+#ifndef __VAPP_HPP__
+#define __VAPP_HPP__
 #include "vgl.h"
 #include <sys/time.h>
 #include <memory.h>
@@ -65,7 +67,6 @@ public:
         gl3wInit();
         Resize(800, 600);
         printVersion();
-
     }
 
     virtual void Display(bool auto_redraw = true)
@@ -110,3 +111,4 @@ public:
         <<" OGLU工具库版本："<<version<<std::endl;
     }
 };
+#endif //  __VAPP_HPP__
