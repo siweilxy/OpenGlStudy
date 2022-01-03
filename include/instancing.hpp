@@ -82,7 +82,7 @@ public:
         // Create the program for rendering the model
         render_prog = glCreateProgram();
 
-        // This is the rendering vertex shader
+        // This is the rendering vertex shader  顶点着色器
         static const char render_vs[] =
             "#version 410\n"
             "\n"
@@ -120,7 +120,7 @@ public:
             "    gl_Position = projection_matrix * (m * pos);\n"
             "}\n";
 
-        // Simple fragment shader
+        // Simple fragment shader 纹理着色器
         static const char render_fs[] =
             "#version 410\n"
             "\n"
@@ -134,7 +134,7 @@ public:
             "    color = vs_fs_color * (0.1 + abs(vs_fs_normal.z)) + vec4(0.8, 0.9, 0.7, 1.0) * pow(abs(vs_fs_normal.z), 40.0);\n"
             "}\n";
 
-        // Compile and link like normal
+        // Compile and link like normal 加载上面的着色器
         vglAttachShaderSource(render_prog, GL_VERTEX_SHADER, render_vs);
         vglAttachShaderSource(render_prog, GL_FRAGMENT_SHADER, render_fs);
 
@@ -146,7 +146,8 @@ public:
         render_projection_matrix_loc = glGetUniformLocation(render_prog, "projection_matrix");
 
         // Load the object
-        object.LoadFromVBM("media/armadillo_low.vbm", 0, 1, 2);
+        object.LoadFromVBM("/home/siwei/work/github/OpenGlStudy/media/armadillo_low.vbm", 0, 1, 2);
+        // object.LoadFromVBM("home/siwei/work/github/OpenGlStudy/media/test3.png", 0, 1, 2);
 
         // Bind its vertex array object so that we can append the instanced attributes
         object.BindVertexArray();
@@ -265,6 +266,7 @@ public:
     void Finalize(void)
     {
         glUseProgram(0);
+
         glDeleteProgram(update_prog);
         glDeleteVertexArrays(2, vao);
         glDeleteBuffers(2, vbo);
